@@ -1,12 +1,12 @@
 // https://unicode-table.com/en/1F44B/
+import usuario from "@/data/constants/usuarioFalso"
 
 export default function BoasVindas() {    
-
-    const usuario = {nome: 'João da Silva'}
+    
     function renderizarNome() {
         return (
             <span className="hidden sm:inline">
-                {usuario?.nome?.split(' ')[0]}
+                {usuario.nome?.split(' ')[0]}
             </span>
         )
     }
