@@ -1,7 +1,8 @@
+import Id from "@/logica/core/comum/Id";
 import Usuario from "@/logica/core/usuario/Usuario";
 
 export default {
-    id: "123746454",
+    id: Id.novo(),
     nome: "Joao da Silva Sauro",
-    email: "joaosilva@gg.com"
+    email: "joaosilva@gg.com",    
 } as Usuario

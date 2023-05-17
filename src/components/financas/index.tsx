@@ -5,7 +5,7 @@ export default function Financas() {
     return (
         <Pagina>
             <Cabecalho />
-            
+            Finanças!!
         </Pagina>
     )
 }
