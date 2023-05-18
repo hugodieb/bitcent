@@ -8,7 +8,7 @@ interface ListaProps {
 }
 
 export default function Lista(props: ListaProps) {
-    
+
     function renderizarTipo(transacao: Transacao) {
         return (
             <span className={`
@@ -36,7 +36,10 @@ export default function Lista(props: ListaProps) {
     }
 
     return (
-        <div>
+        <div className={`
+            flex flex-col border border-zinc-700
+            rounded-xl overflow-hidden
+        `}>
             {props.transacoes.map(renderizarLinha)}
         </div>
     )
