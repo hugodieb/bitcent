@@ -9,13 +9,19 @@ import Formulario from "@/components/financas/Formulario"
 
 export default function Financas() {
     const [transacoes, setTransacoes] = useState<Transacao[]>(transacoesFalsas)
+    const [transacao, setTransacao] = useState<Transacao | null>(null)
 
     return (
         <Pagina>
             <Cabecalho />
             <Conteudo className="gap-5">
-               <Lista transacoes={transacoes} />
-               <Formulario transacao={transacoes[0]} />
+                -3:46               
+               { transacao ? (
+                    <Formulario transacao={transacao}
+                        cancelar={() => setTransacao(null)}
+                    />
+                ) : (<Lista transacoes={transacoes} selecionarTransacao={setTransacao} />)
+                }
             </Conteudo>
         </Pagina>
     )

@@ -6,7 +6,8 @@ import { DatePickerInput } from "@mantine/dates"
 import { TipoTransacao } from "@/logica/core/financas/TipoTransacao"
 
 interface FormularioProps {
-    transacao: Transacao
+    transacao: Transacao,
+    cancelar?: () => void
 }
 
 export default function Formulario(props: FormularioProps) {
@@ -50,6 +51,7 @@ export default function Formulario(props: FormularioProps) {
                 </Button>
                 <Button
                     className="bg-zinc-500" color="gray"
+                    onClick={props.cancelar}
                 >
                     Voltar
                 </Button>
