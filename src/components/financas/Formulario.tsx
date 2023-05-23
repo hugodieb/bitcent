@@ -7,7 +7,9 @@ import { TipoTransacao } from "@/logica/core/financas/TipoTransacao"
 
 interface FormularioProps {
     transacao: Transacao,
-    cancelar?: () => void
+    cancelar?: () => void,
+    excluir?: (transacao: Transacao) => void,
+    salvar?: (transacao: Transacao) => void
 }
 
 export default function Formulario(props: FormularioProps) {
@@ -46,6 +48,7 @@ export default function Formulario(props: FormularioProps) {
             <div className="flex px-4 sm:px-7 py-4 gap-3 bg-zinc-800">
                 <Button
                     className="bg-green-500" color="green"
+                    onClick={() => props.salvar?.(props.transacao)}
                 >
                     Salvar
                 </Button>
@@ -59,6 +62,7 @@ export default function Formulario(props: FormularioProps) {
                 {props.transacao.id && (
                    <Button
                         className="bg-red-500" color="red"
+                        onClick={() => props.excluir?.(props.transacao)}
                     >
                         Excluir
                     </Button> 
