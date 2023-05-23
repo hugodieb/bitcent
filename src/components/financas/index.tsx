@@ -6,17 +6,24 @@ import Transacao from "@/logica/core/financas/Transacao"
 import transacoesFalsas from "@/data/constants/transacoesFalsas"
 import Lista from "./Lista"
 import Formulario from "@/components/financas/Formulario"
+import NaoEncontrado from "../template/NaoEncontrado"
+import Id from "@/logica/core/comum/Id"
 
 export default function Financas() {
     const [transacoes, setTransacoes] = useState<Transacao[]>(transacoesFalsas)
     const [transacao, setTransacao] = useState<Transacao | null>(null)
     
     function salvar(transacao: Transacao) {
-
+        
+        const outrasTransacoes = transacoes.filter(t => t.id!== transacao.id)
+        setTransacoes([...outrasTransacoes, {
+            ...transacao,
+            id: transacao.id ?? Id.novo()
+        }])
+        setTransacao(null)
     }
 
-    function excluir(transacao: Transacao) {
-        console.log('excluir', transacao)
+    function excluir(transacao: Transacao) {        
         const outrasTransacoes = transacoes.filter(t => t.id!== transacao.id)
         setTransacoes(outrasTransacoes)
         setTransacao(null)
@@ -33,7 +40,12 @@ export default function Financas() {
                         excluir={excluir}
                         cancelar={() => setTransacao(null)}
                     />
-                ) : (<Lista transacoes={transacoes} selecionarTransacao={setTransacao} />)
+                ) : transacoes.length ? (<Lista transacoes={transacoes} selecionarTransacao={setTransacao} />
+                
+                ) : 
+                    <NaoEncontrado>
+                        Nenhuma Transação foi encontrada!
+                    </NaoEncontrado>                
                 }
             </Conteudo>
         </Pagina>
