@@ -33,7 +33,7 @@ export default function Financas() {
         <Pagina>
             <Cabecalho />
             <Conteudo className="gap-5">
-                -3:39               
+                -3:29               
                { transacao ? (
                     <Formulario transacao={transacao}
                         salvar={salvar}

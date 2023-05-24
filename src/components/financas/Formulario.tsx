@@ -35,6 +35,9 @@ export default function Formulario(props: FormularioProps) {
                 <TextInput
                     label="Valor"
                     value={Dinheiro.formatar(transacao.valor)}
+                    onChange={e => setTransacao({...transacao, 
+                                    valor: e.currentTarget.valueAsNumber
+                    })}
                 />
                 <DatePickerInput 
                     label="Data"
