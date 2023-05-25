@@ -2,12 +2,14 @@ import Cabecalho from "@/components/template/Cabecalho"
 import Pagina from "@/components/template/Pagina"
 import Conteudo from "@/components/template/Conteudo"
 import { useState } from "react"
-import Transacao from "@/logica/core/financas/Transacao"
+import Transacao, { transacaoVazia } from "@/logica/core/financas/Transacao"
 import transacoesFalsas from "@/data/constants/transacoesFalsas"
 import Lista from "./Lista"
 import Formulario from "@/components/financas/Formulario"
 import NaoEncontrado from "../template/NaoEncontrado"
 import Id from "@/logica/core/comum/Id"
+import { IconPlus } from "@tabler/icons-react"
+import { Button } from "@mantine/core"
 
 export default function Financas() {
     const [transacoes, setTransacoes] = useState<Transacao[]>(transacoesFalsas)
@@ -33,7 +35,14 @@ export default function Financas() {
         <Pagina>
             <Cabecalho />
             <Conteudo className="gap-5">
-                -3:29               
+
+                <Button
+                    className="bg-blue-500"
+                    leftIcon={<IconPlus />}
+                    onClick={() => setTransacao(transacaoVazia)}                    
+                >
+                    Nova Transação
+                </Button>               
                { transacao ? (
                     <Formulario transacao={transacao}
                         salvar={salvar}

@@ -5,6 +5,7 @@ import { TextInput, Radio, Group, Button } from "@mantine/core"
 import { DatePickerInput } from "@mantine/dates"
 import { TipoTransacao } from "@/logica/core/financas/TipoTransacao"
 import { useState } from "react"
+import useFormulario from "@/data/hooks/useFormulario"
 
 interface FormularioProps {
     transacao: Transacao,
@@ -13,8 +14,8 @@ interface FormularioProps {
     salvar?: (transacao: Transacao) => void
 }
 
-export default function Formulario(props: FormularioProps) {
-    const [transacao, setTransacao] = useState(props.transacao)
+export default function Formulario(props: FormularioProps) {    
+    const {transacao, setTransacao} = useFormulario(props.transacao)
 
     return (
         <div className={`
