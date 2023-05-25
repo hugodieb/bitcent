@@ -15,7 +15,7 @@ interface FormularioProps {
 }
 
 export default function Formulario(props: FormularioProps) {    
-    const {transacao, setTransacao} = useFormulario(props.transacao)
+    const {dados, alterarDados} = useFormulario(props.transacao)
 
     return (
         <div className={`
@@ -28,16 +28,16 @@ export default function Formulario(props: FormularioProps) {
             <div className="flex flex-col gap-4 p-4 sm:p-7">
                 <TextInput
                     label="Descrição"
-                    value={transacao.descricao}
-                    onChange={e => setTransacao({...transacao,
+                    value={dados.descricao}
+                    onChange={e => alterarDados({...dados,
                                     descricao: e.currentTarget.value
                     })}     
                 />
                 <TextInput
                     label="Valor"
-                    value={Dinheiro.formatar(transacao.valor)}
-                    onChange={e => setTransacao({...transacao, 
-                                    valor: e.currentTarget.valueAsNumber
+                    value={Dinheiro.formatar(dados.valor)}
+                    onChange={e => alterarDados({...dados, 
+                                    valor: Dinheiro.desformatar(e.currentTarget.value)
                     })}
                 />
                 <DatePickerInput 
@@ -58,7 +58,7 @@ export default function Formulario(props: FormularioProps) {
             <div className="flex px-4 sm:px-7 py-4 gap-3 bg-zinc-800">
                 <Button
                     className="bg-green-500" color="green"
-                    onClick={() => props.salvar?.(transacao)}
+                    onClick={() => props.salvar?.(dados)}
                 >
                     Salvar
                 </Button>
@@ -72,7 +72,7 @@ export default function Formulario(props: FormularioProps) {
                 {props.transacao.id && (
                    <Button
                         className="bg-red-500" color="red"
-                        onClick={() => props.excluir?.(transacao)}
+                        onClick={() => props.excluir?.(dados)}
                     >
                         Excluir
                     </Button> 

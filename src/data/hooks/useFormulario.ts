@@ -1,11 +1,11 @@
 import Transacao from "@/logica/core/financas/Transacao";
 import { useState } from "react";
 
-export default function useFormulario(transacaoInicial: Transacao) {
-    const [transacao, setTransacao] = useState(transacaoInicial)
+export default function useFormulario(dadosIniciais: Transacao) {
+    const [dados, setDados] = useState(dadosIniciais)
 
     return {
-        transacao,
-        setTransacao,
+        dados,
+        alterarDados: setDados,
     }
 }
