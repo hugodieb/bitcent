@@ -15,7 +15,7 @@ interface FormularioProps {
 }
 
 export default function Formulario(props: FormularioProps) {    
-    const {dados, alterarDados} = useFormulario(props.transacao)
+    const {dados, alterarDados, alterarAtributo} = useFormulario(props.transacao)
 
     return (
         <div className={`
@@ -29,16 +29,12 @@ export default function Formulario(props: FormularioProps) {
                 <TextInput
                     label="Descrição"
                     value={dados.descricao}
-                    onChange={e => alterarDados({...dados,
-                                    descricao: e.currentTarget.value
-                    })}     
+                    onChange={alterarAtributo('descricao')}    
                 />
                 <TextInput
                     label="Valor"
                     value={Dinheiro.formatar(dados.valor)}
-                    onChange={e => alterarDados({...dados, 
-                                    valor: Dinheiro.desformatar(e.currentTarget.value)
-                    })}
+                    onChange={alterarAtributo('valor', Dinheiro.desformatar)}
                 />
                 <DatePickerInput 
                     label="Data"
