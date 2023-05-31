@@ -43,7 +43,8 @@ export default function Formulario(props: FormularioProps) {
                     valueFormat="DD/MM/YYYY"
                 />
                 <Radio.Group
-                    value={props.transacao.tipo}
+                    value={dados.tipo}
+                    onChange={alterarAtributo('tipo')}
                 >
                     <Group>
                         <Radio value={TipoTransacao.RECEITA} label="Receita" />

@@ -6,6 +6,7 @@ export default function useFormulario(dadosIniciais: Transacao) {
 
     function alterarAtributo(atributo: string, fn?: Function) {
         return (valorOuEvento: any) => {
+            debugger
             const v = valorOuEvento?.target?.value ?? valorOuEvento
             setDados({...dados, [atributo]: fn?.(v) ?? v })
         }
