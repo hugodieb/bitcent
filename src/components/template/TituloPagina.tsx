@@ -1,8 +1,8 @@
 import React from "react";
 interface TituloPaginaProps {
-    icone: any
+    icone?: any
     principal: string
-    secundario: string
+    secundario?: string
     className?: string
 }
 
@@ -21,9 +21,11 @@ export default function TituloPagina(props: TituloPaginaProps) {
                 <h1 className="text-2xl font-black">
                     {props.principal}
                 </h1>
-                <h2 className="text-sm font-thin -mt-1">
-                    {props.secundario}
-                </h2>
+                {props.secundario && (
+                    <h2 className="text-sm font-thin -mt-1">
+                        {props.secundario}
+                    </h2>
+                )}
             </div>
         </div>
     )

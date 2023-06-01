@@ -4,6 +4,7 @@ import Pagina from "@/components/template/Pagina";
 import TituloPagina from "@/components/template/TituloPagina";
 import { IconForms } from "@tabler/icons-react";
 import usuario from "@/data/constants/usuarioFalso";
+import Formularios from "@/components/usuario/Formularios";
 
 export default function CadastroUsuario() {
   return (
@@ -15,6 +16,7 @@ export default function CadastroUsuario() {
              principal="Dados Cadastrais"
              secundario={`Informações de ${usuario.email}`}            
           />
+          <Formularios />          
         </Conteudo>
     </Pagina>    
   )
