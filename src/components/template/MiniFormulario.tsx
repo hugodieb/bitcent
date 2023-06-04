@@ -29,7 +29,7 @@ export default function MiniFormulario(props: MiniFormularioProps) {
                     {props.msgRodape}
                 </span>
                 <Button
-                    disabled={props.podeSalvar}
+                    disabled={!props.podeSalvar}
                      color="green"
                      className={props.podeSalvar ? 'bg-green-500' : 'bg-green-800'}
                      onClick={() => props.podeSalvar ? props.salvar() : null}
