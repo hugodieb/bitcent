@@ -4,6 +4,8 @@ import usuarioMoc from "@/data/constants/usuarioFalso";
 import Usuario from "@/logica/core/usuario/Usuario";
 import { TextInput } from "@mantine/core";
 import Texto from "@/logica/utils/Texto";
+import Cpf from "@/logica/utils/Cpf";
+import Telefone from "@/logica/utils/Telefone";
 
 export default function Formularios() {
     const{ dados, alterarAtributo } = useFormulario<Usuario>(usuarioMoc)
@@ -29,7 +31,11 @@ export default function Formularios() {
                 msgRodape="Pode relaxar, daqui ele não sai!"
                 podeSalvar={true}
                 salvar={() => {}}
-            >                
+            >
+                <TextInput
+                    value={Cpf.formatar(dados.cpf ?? '')}
+                    onChange={alterarAtributo('cpf', Cpf.desformatar)}
+                />                
             </MiniFormulario>
             <MiniFormulario
                 titulo="Telefone"
@@ -37,7 +43,11 @@ export default function Formularios() {
                 msgRodape="Se receber ligação á cobrar, não foi a gente!"
                 podeSalvar={true}
                 salvar={() => {}}
-            >                
+            >
+                <TextInput
+                    value={Telefone.formatar(dados.telefone ?? '')}
+                    onChange={alterarAtributo('telefone', Telefone.desformatar)}
+                />                
             </MiniFormulario>
         </div>
     )
