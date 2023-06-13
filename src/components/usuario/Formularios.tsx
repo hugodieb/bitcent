@@ -12,7 +12,7 @@ export default function Formularios() {
 
     return (
         <div className="flex flex-col gap-5">
-            3:04
+            3:26
             <MiniFormulario
                 titulo="Seu Nome"
                 descricao="Entre com seu nome para a aplicação"
