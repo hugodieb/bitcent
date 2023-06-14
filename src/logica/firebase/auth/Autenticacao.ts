@@ -1,6 +1,10 @@
 import Usuario from "@/logica/core/usuario/Usuario";
-import { Auth, GoogleAuthProvider, User, getAuth, signInWithPopup, signOut } from "firebase/auth"
+import { Auth, GoogleAuthProvider, User, getAuth, onIdTokenChanged, signInWithPopup, signOut } from "firebase/auth"
 import { app } from "../config/app";
+import { type } from "os";
+
+export type MonitorarUsuario = (usuario: Usuario | null) => void
+export type CancelarMonitoramento = () => void
 
 export default class Autenticacao {
     private _auth: Auth
@@ -28,5 +32,12 @@ export default class Autenticacao {
             email: usuarioFirebase.email,
             imageUrl: usuarioFirebase.photoURL
         }
+    }
+
+    monitorar(notificar: MonitorarUsuario): CancelarMonitoramento {
+        return onIdTokenChanged(this._auth, async (usuarioFirebase) => {
+            const usuario = this.converterParaUsuario(usuarioFirebase)
+            notificar(usuario)
+        })
     }
 }
